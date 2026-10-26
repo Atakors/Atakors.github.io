@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PrintMaster A4 — Duplicator & Poster Maker</title>
-    <meta name="description" content="PrintMaster A4 — Duplicate photos, make posters, and generate school labels in seconds. Download the Windows app or try the Telegram bot.">
+    <title>PrintMaster A4 — Duplicator &amp; Poster Maker</title>
+    <meta name="description" content="PrintMaster A4 — Duplicate photos, make posters, and generate school labels in seconds. Download the Windows app, explore the tutorial, or try the Telegram bot.">
     <link rel="icon" type="image/png" href="assets/logo_icon.png">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <style>
         /* ═══════════════════════════════════════════════
@@ -21,6 +21,7 @@
             --brand-deep:     #0B0E18;
             --brand-surface:  #111627;
             --brand-card:     #161B2E;
+            --brand-card-sub: #1B2139;
             --brand-border:   #1E2640;
             --brand-border-h: #2A3456;
 
@@ -30,18 +31,20 @@
             --accent-indigo:  #6366F1;
             --accent-orange:  #F97316;
             --accent-amber:   #FBBF24;
+            --accent-emerald: #10B981;
 
             /* Text system */
             --text-primary:   #F1F5F9;
             --text-secondary: #94A3B8;
             --text-muted:     #64748B;
 
-            /* Gradients */
+            /* Gradients & Shadows */
             --glow-cyan:      0 0 60px rgba(56, 189, 248, 0.15);
             --glow-orange:    0 0 60px rgba(249, 115, 22, 0.12);
+            --glow-emerald:   0 0 60px rgba(16, 185, 129, 0.15);
 
             /* Spacing */
-            --section-gap:    clamp(3rem, 8vw, 6rem);
+            --section-gap:    clamp(3.5rem, 8vw, 6.5rem);
         }
 
         /* ═══════════════════════════════════════════════
@@ -135,7 +138,7 @@
 
         .container {
             width: 100%;
-            max-width: 880px;
+            max-width: 940px;
             padding: 0 1.5rem;
         }
 
@@ -152,17 +155,18 @@
             display: flex;
             justify-content: center;
             backdrop-filter: blur(20px) saturate(1.5);
-            background: rgba(11, 14, 24, 0.7);
+            background: rgba(11, 14, 24, 0.75);
             border-bottom: 1px solid var(--brand-border);
             transition: background 0.3s;
         }
 
         .navbar-inner {
             width: 100%;
-            max-width: 880px;
+            max-width: 940px;
             display: flex;
             align-items: center;
             justify-content: space-between;
+            gap: 1rem;
         }
 
         .nav-brand {
@@ -170,6 +174,7 @@
             align-items: center;
             gap: 0.6rem;
             text-decoration: none;
+            flex-shrink: 0;
         }
 
         .nav-brand img {
@@ -187,6 +192,41 @@
             color: var(--accent-orange);
         }
 
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 1.25rem;
+        }
+
+        .nav-link {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.88rem;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .nav-link:hover {
+            color: var(--accent-cyan);
+        }
+
+        .nav-link--highlight {
+            color: var(--accent-cyan);
+            font-weight: 600;
+            position: relative;
+        }
+
+        .nav-link--highlight::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--accent-cyan);
+            border-radius: 2px;
+        }
+
         .nav-badge {
             font-family: 'JetBrains Mono', monospace;
             font-size: 0.65rem;
@@ -197,13 +237,18 @@
             padding: 0.15rem 0.5rem;
             border-radius: 99px;
             letter-spacing: 0.04em;
+            flex-shrink: 0;
+        }
+
+        @media (max-width: 720px) {
+            .nav-links { display: none; }
         }
 
         /* ═══════════════════════════════════════════════
            Hero Section
            ═══════════════════════════════════════════════ */
         .hero {
-            padding-top: calc(80px + var(--section-gap));
+            padding-top: calc(85px + var(--section-gap));
             padding-bottom: var(--section-gap);
             text-align: center;
         }
@@ -267,7 +312,7 @@
         }
 
         .hero-description {
-            max-width: 560px;
+            max-width: 580px;
             margin: 0 auto 2.5rem;
             font-size: 1rem;
             color: var(--text-muted);
@@ -321,6 +366,18 @@
             box-shadow: 0 8px 30px rgba(37, 99, 235, 0.4);
         }
 
+        .btn--tutorial {
+            background: rgba(56, 189, 248, 0.08);
+            border: 1px solid rgba(56, 189, 248, 0.25);
+            color: var(--accent-cyan);
+        }
+
+        .btn--tutorial:hover {
+            background: rgba(56, 189, 248, 0.15);
+            transform: translateY(-2px);
+            border-color: var(--accent-cyan);
+        }
+
         .btn--telegram {
             background: linear-gradient(135deg, #0088cc, #29b6f6);
             color: #fff;
@@ -367,7 +424,7 @@
         }
 
         .section-title {
-            font-size: clamp(1.5rem, 4vw, 2rem);
+            font-size: clamp(1.6rem, 4vw, 2.2rem);
             font-weight: 800;
             letter-spacing: -0.02em;
             margin-bottom: 0.5rem;
@@ -381,7 +438,7 @@
 
         .cards-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
             gap: 1.25rem;
         }
 
@@ -434,6 +491,218 @@
         }
 
         /* ═══════════════════════════════════════════════
+           Tutorial Section (Comprehensive Guide)
+           ═══════════════════════════════════════════════ */
+        .tutorial-section {
+            padding-bottom: var(--section-gap);
+        }
+
+        .tutorial-container {
+            background: var(--brand-card);
+            border: 1px solid var(--brand-border);
+            border-radius: 20px;
+            padding: clamp(1.5rem, 4vw, 2.5rem);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .tutorial-tabs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--brand-border);
+        }
+
+        .tab-btn {
+            background: var(--brand-surface);
+            color: var(--text-secondary);
+            border: 1px solid var(--brand-border);
+            padding: 0.65rem 1.2rem;
+            border-radius: 10px;
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.88rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.25s;
+        }
+
+        .tab-btn:hover {
+            background: var(--brand-card-sub);
+            color: var(--text-primary);
+            border-color: var(--brand-border-h);
+        }
+
+        .tab-btn.active {
+            background: linear-gradient(135deg, rgba(37, 99, 235, 0.2), rgba(56, 189, 248, 0.15));
+            border-color: var(--accent-cyan);
+            color: #fff;
+            box-shadow: 0 0 20px rgba(56, 189, 248, 0.18);
+        }
+
+        .tab-pane {
+            display: none;
+            animation: fadeIn 0.35s ease;
+        }
+
+        .tab-pane.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        .tutorial-steps {
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+        }
+
+        .step-row {
+            display: flex;
+            gap: 1.25rem;
+            background: var(--brand-surface);
+            border: 1px solid var(--brand-border);
+            border-radius: 14px;
+            padding: 1.35rem 1.5rem;
+            transition: border-color 0.25s, transform 0.25s;
+        }
+
+        .step-row:hover {
+            border-color: var(--brand-border-h);
+            transform: translateX(4px);
+        }
+
+        .step-num {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: var(--accent-cyan);
+            line-height: 1;
+            flex-shrink: 0;
+            width: 38px;
+            height: 38px;
+            background: rgba(56, 189, 248, 0.08);
+            border: 1px solid rgba(56, 189, 248, 0.2);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .step-num--orange {
+            color: var(--accent-orange);
+            background: rgba(249, 115, 22, 0.08);
+            border-color: rgba(249, 115, 22, 0.2);
+        }
+
+        .step-num--emerald {
+            color: var(--accent-emerald);
+            background: rgba(16, 185, 129, 0.08);
+            border-color: rgba(16, 185, 129, 0.2);
+        }
+
+        .step-content {
+            flex: 1;
+        }
+
+        .step-content h4 {
+            font-size: 1.05rem;
+            font-weight: 700;
+            margin-bottom: 0.35rem;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .step-content p {
+            font-size: 0.88rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        .key-badge {
+            display: inline-block;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            padding: 0.1rem 0.45rem;
+            border-radius: 5px;
+            color: var(--accent-cyan);
+            margin: 0.15rem 0.1rem;
+        }
+
+        .key-badge--orange {
+            color: var(--accent-orange);
+            background: rgba(249, 115, 22, 0.08);
+            border-color: rgba(249, 115, 22, 0.25);
+        }
+
+        .key-badge--amber {
+            color: var(--accent-amber);
+            background: rgba(251, 191, 36, 0.08);
+            border-color: rgba(251, 191, 36, 0.25);
+        }
+
+        .callout-box {
+            background: linear-gradient(135deg, rgba(249, 115, 22, 0.08), rgba(251, 191, 36, 0.04));
+            border: 1px solid rgba(249, 115, 22, 0.28);
+            border-radius: 14px;
+            padding: 1.5rem;
+            margin-top: 1.5rem;
+            position: relative;
+        }
+
+        .callout-box h4 {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--accent-orange);
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .callout-box p {
+            font-size: 0.88rem;
+            color: #CBD5E1;
+            line-height: 1.6;
+        }
+
+        .callout-box ul {
+            margin: 0.75rem 0 0 1.25rem;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .callout-box li {
+            margin-bottom: 0.35rem;
+        }
+
+        .tip-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            background: rgba(56, 189, 248, 0.1);
+            border: 1px solid rgba(56, 189, 248, 0.2);
+            color: var(--accent-cyan);
+            border-radius: 99px;
+            padding: 0.2rem 0.65rem;
+            font-size: 0.72rem;
+            font-weight: 600;
+            margin-top: 0.5rem;
+        }
+
+        /* ═══════════════════════════════════════════════
            Download Section — Accent Card
            ═══════════════════════════════════════════════ */
         .download-section {
@@ -468,7 +737,7 @@
         .download-card > * { position: relative; z-index: 1; }
 
         .download-card h2 {
-            font-size: clamp(1.5rem, 4vw, 2rem);
+            font-size: clamp(1.6rem, 4vw, 2.2rem);
             font-weight: 800;
             margin-bottom: 0.5rem;
         }
@@ -521,7 +790,7 @@
 
         .social-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
             gap: 1rem;
         }
 
@@ -605,13 +874,13 @@
            ═══════════════════════════════════════════════ */
         .footer {
             border-top: 1px solid var(--brand-border);
-            padding: 2rem 0;
+            padding: 2.5rem 0;
             text-align: center;
             width: 100%;
         }
 
         .footer-inner {
-            max-width: 880px;
+            max-width: 940px;
             margin: 0 auto;
             padding: 0 1.5rem;
         }
@@ -624,18 +893,18 @@
         }
 
         .footer-brand img {
-            width: 22px;
-            height: 22px;
+            width: 24px;
+            height: 24px;
         }
 
         .footer-brand span {
             font-weight: 600;
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             color: var(--text-secondary);
         }
 
         .footer p {
-            font-size: 0.78rem;
+            font-size: 0.8rem;
             color: var(--text-muted);
         }
 
@@ -675,6 +944,9 @@
             .social-grid { grid-template-columns: 1fr; }
             .version-meta { flex-direction: column; gap: 0.5rem; }
             .cards-grid { grid-template-columns: 1fr; }
+            .step-row { flex-direction: column; gap: 0.75rem; }
+            .tutorial-tabs { flex-direction: column; }
+            .tab-btn { width: 100%; justify-content: center; }
         }
     </style>
 </head>
@@ -694,6 +966,12 @@
                 <img src="assets/logo_icon.png" alt="PrintMaster A4 Logo">
                 <span class="nav-brand-text">PrintMaster <span>A4</span></span>
             </a>
+            <div class="nav-links">
+                <a href="#features" class="nav-link">Features</a>
+                <a href="#tutorial" class="nav-link nav-link--highlight">App Tutorial</a>
+                <a href="#download" class="nav-link">Download</a>
+                <a href="#connect" class="nav-link">Connect</a>
+            </div>
             <span class="nav-badge">v3.0</span>
         </div>
     </nav>
@@ -713,15 +991,19 @@
             </h1>
             <p class="hero-tagline">Duplicator &amp; Poster Maker</p>
             <p class="hero-description">
-                Duplicate any photo to fill an A4 page in one click, create stunning posters,
-                and generate themed school notebook labels — available as a Windows desktop app
-                and a Telegram bot.
+                Duplicate any photo to fill an A4 page in one click, create stunning wall posters,
+                and generate themed school notebook labels — available as a native Windows desktop app
+                and an interactive Telegram bot.
             </p>
 
             <div class="hero-actions">
                 <a href="https://www.mediafire.com/file/hczlguudv4tp7b5/PrintMasterA4.exe/file" class="btn btn--primary" target="_blank" rel="noopener">
                     <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
                     Download for Windows
+                </a>
+                <a href="#tutorial" class="btn btn--tutorial">
+                    <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg>
+                    How to Use (Tutorial)
                 </a>
                 <a href="https://t.me/Duplicayoredz_bot" class="btn btn--telegram" target="_blank" rel="noopener">
                     <svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.479.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
@@ -731,35 +1013,234 @@
         </section>
 
         <!-- ════════════ Features ════════════ -->
-        <section class="features container reveal">
+        <section id="features" class="features container reveal">
             <span class="section-label">Features</span>
             <h2 class="section-title">Everything you need to print</h2>
-            <p class="section-subtitle">Three powerful tools in one application.</p>
+            <p class="section-subtitle">Three powerful tools in one desktop application.</p>
 
             <div class="cards-grid">
                 <div class="card reveal reveal-delay-1">
                     <span class="card-icon">🖨️</span>
                     <h3>Photo Duplicator</h3>
-                    <p>Select any photo and instantly duplicate it across an A4 page — perfect for passport photos, ID pictures, and batch printing.</p>
+                    <p>Select any photo and instantly duplicate it across an A4 page with millimetric accuracy — perfect for passport photos, ID pictures, stickers, and business cards.</p>
                 </div>
                 <div class="card reveal reveal-delay-2">
                     <span class="card-icon">🎨</span>
                     <h3>Poster Maker</h3>
-                    <p>Transform any image into a beautiful poster layout, optimized for A4 printing with automatic scaling and positioning.</p>
+                    <p>Transform any picture into a giant wall poster split across multiple A4 sheets (2×2, 3×3, 4×4) with overlap glue guides and sheet indexing labels.</p>
                 </div>
                 <div class="card reveal reveal-delay-3">
                     <span class="card-icon">📓</span>
                     <h3>School Labels</h3>
-                    <p>Generate themed notebook labels with 16+ subjects, 10 unique 3D character templates, and trilingual support (English, French, Arabic).</p>
+                    <p>Generate themed school notebook stickers with 16+ subjects, 10 unique 3D character templates, and trilingual support (English, French, Arabic).</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ════════════ Tutorial Section ════════════ -->
+        <section id="tutorial" class="tutorial-section container reveal">
+            <span class="section-label">Interactive Guide</span>
+            <h2 class="section-title">Windows App Step-by-Step Tutorial</h2>
+            <p class="section-subtitle">Learn how to configure dimensions, cut guides, posters, and print with exact millimeter fidelity.</p>
+
+            <div class="tutorial-container">
+                <!-- Tab Selector Buttons -->
+                <div class="tutorial-tabs" role="tablist">
+                    <button class="tab-btn active" onclick="switchTutorialTab('duplicator', this)">
+                        <span>🖨️</span> Duplicator &amp; ID Photos
+                    </button>
+                    <button class="tab-btn" onclick="switchTutorialTab('poster', this)">
+                        <span>🧩</span> Giant Poster Maker
+                    </button>
+                    <button class="tab-btn" onclick="switchTutorialTab('printing-rules', this)">
+                        <span>⚠️</span> Golden Printing Rules
+                    </button>
+                    <button class="tab-btn" onclick="switchTutorialTab('batch-tips', this)">
+                        <span>⚡</span> Batch Export &amp; Pro Tips
+                    </button>
+                </div>
+
+                <!-- ── TAB 1: Duplicator Mode ── -->
+                <div id="tab-duplicator" class="tab-pane active">
+                    <div class="tutorial-steps">
+                        <div class="step-row">
+                            <div class="step-num">01</div>
+                            <div class="step-content">
+                                <h4>Open or Drag &amp; Drop Your Image</h4>
+                                <p>Launch PrintMaster A4. Click <span class="key-badge">Browse Image...</span> in the top-left or simply <strong>drag and drop any photo</strong> directly onto the large blueprint workspace. Supported formats: PNG, JPG, JPEG, BMP.</p>
+                            </div>
+                        </div>
+
+                        <div class="step-row">
+                            <div class="step-num">02</div>
+                            <div class="step-content">
+                                <h4>Pick a Standard Size Preset (or Custom mm)</h4>
+                                <p>Select your required dimensions from the dropdown. One click sets exact legal standards:</p>
+                                <p style="margin-top:0.4rem;">
+                                    <span class="key-badge">🛂 Passport / ID: 3.5 × 4.5 cm</span>
+                                    <span class="key-badge">🇺🇸 US Visa: 5.1 × 5.1 cm</span>
+                                    <span class="key-badge">💳 Business Card: 8.5 × 5.5 cm</span>
+                                    <span class="key-badge">📸 Polaroid: 7.0 × 7.0 cm</span>
+                                    <span class="key-badge">✉️ A6 Postcard: 10.5 × 14.8 cm</span>
+                                </p>
+                                <div class="tip-pill">💡 Leave "Lock Aspect Ratio" checked to preserve natural photo proportions!</div>
+                            </div>
+                        </div>
+
+                        <div class="step-row">
+                            <div class="step-num">03</div>
+                            <div class="step-content">
+                                <h4>Adjust Margins &amp; Auto-Fit the Page</h4>
+                                <p>Set paper margins: choose <span class="key-badge">Standard (10 mm)</span>, <span class="key-badge">Narrow (5 mm)</span>, or <span class="key-badge">Borderless (0 mm)</span>. Keep <span class="key-badge">Auto-Fit Duplicates</span> checked, and PrintMaster will automatically calculate how many copies fit your A4 sheet in the optimal pattern (e.g. 15 images in 3 × 5).</p>
+                            </div>
+                        </div>
+
+                        <div class="step-row">
+                            <div class="step-num">04</div>
+                            <div class="step-content">
+                                <h4>Turn On Scissors Cut Marks ✂️</h4>
+                                <p>Expand <strong>Advanced Print &amp; Cut Options</strong> and make sure <span class="key-badge">Show &amp; Print Cut Marks</span> is enabled. The app draws precision corner tick marks and a faint guide box around each image, letting you cut straight with a ruler or paper cutter without guessing.</p>
+                            </div>
+                        </div>
+
+                        <div class="step-row">
+                            <div class="step-num">05</div>
+                            <div class="step-content">
+                                <h4>Export Multi-Page PDF or Print Directly</h4>
+                                <p>Click <span class="key-badge key-badge--orange">Print to PDF / Paper</span> to send straight to your printer, or click <span class="key-badge">Export PDF</span> for a crystal-clear vector document. You can also export an uncompressed <span class="key-badge">300 DPI Image</span>.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ── TAB 2: Poster Maker Mode ── -->
+                <div id="tab-poster" class="tab-pane">
+                    <div class="tutorial-steps">
+                        <div class="step-row">
+                            <div class="step-num step-num--orange">01</div>
+                            <div class="step-content">
+                                <h4>Switch to Poster Maker Mode</h4>
+                                <p>In the sidebar under <strong>Operation Mode</strong>, click the <span class="key-badge key-badge--orange">Poster Maker</span> card. The interactive blueprint preview will immediately switch from a single-page grid to a multi-sheet wall tile view.</p>
+                            </div>
+                        </div>
+
+                        <div class="step-row">
+                            <div class="step-num step-num--orange">02</div>
+                            <div class="step-content">
+                                <h4>Choose Your Wall Poster Dimensions</h4>
+                                <p>Select how many A4 sheets to split your image across:</p>
+                                <p style="margin-top:0.4rem;">
+                                    <span class="key-badge key-badge--orange">2 × 2 Sheets (~A2 Poster, 42 × 60 cm)</span>
+                                    <span class="key-badge key-badge--orange">3 × 3 Sheets (~A0 Giant, 63 × 89 cm)</span>
+                                    <span class="key-badge key-badge--orange">4 × 4 Sheets (Massive Wall Mural, 84 × 118 cm)</span>
+                                    <span class="key-badge">Custom Across × Down Grid</span>
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="step-row">
+                            <div class="step-num step-num--orange">03</div>
+                            <div class="step-content">
+                                <h4>Set Overlap (Glue Allowance)</h4>
+                                <p>Select an overlap margin between adjacent sheets. The standard is <span class="key-badge key-badge--orange">10 mm (Std)</span>. This creates a clean strip where sheets overlap so you never have gaps or white seams between pages.</p>
+                            </div>
+                        </div>
+
+                        <div class="step-row">
+                            <div class="step-num step-num--orange">04</div>
+                            <div class="step-content">
+                                <h4>Enable Glue Lines &amp; Sheet Coordinate Labels</h4>
+                                <p>Keep <span class="key-badge key-badge--orange">Print glue lines &amp; sheet labels</span> checked. Each printed sheet will feature a dashed overlap line saying <em>"Glue Sheet #2 Here"</em> and clear coordinates (<em>Row 1/2, Col 1/2</em>) so assembling your poster is foolproof.</p>
+                            </div>
+                        </div>
+
+                        <div class="step-row">
+                            <div class="step-num step-num--orange">05</div>
+                            <div class="step-content">
+                                <h4>Export Multi-Page PDF &amp; Assemble</h4>
+                                <p>Click <span class="key-badge">Export PDF</span>. All pages are bundled into one sequential PDF. Print each page on regular A4 paper, trim along the marked cut edges, apply glue or tape along the designated overlap strips, and your giant wall poster is ready!</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ── TAB 3: Golden Rules of Printing ── -->
+                <div id="tab-printing-rules" class="tab-pane">
+                    <div class="callout-box">
+                        <h4>⚠️ The #1 Fatal Mistake Beginners Make: Wrong Scaling!</h4>
+                        <p>When opening a PDF in Adobe Acrobat, Chrome, or Windows Photo Viewer, printer drivers almost always default to <strong>"Fit to Printable Area"</strong> or <strong>"Shrink to Fit"</strong>. This shrinks your photos by 4% to 8%, ruining official passport regulations!</p>
+                        <ul>
+                            <li>✅ <strong>ALWAYS SELECT: "Actual Size" or "100% Scale"</strong> in your printer settings dialog.</li>
+                            <li>✅ <strong>Paper Size:</strong> Ensure the printer is set to <strong>A4</strong> (210 × 297 mm), not US Letter (215.9 × 279.4 mm).</li>
+                            <li>✅ <strong>Orientation:</strong> Match the orientation selected in PrintMaster (Portrait or Landscape).</li>
+                        </ul>
+                    </div>
+
+                    <div class="tutorial-steps" style="margin-top:1.5rem;">
+                        <div class="step-row">
+                            <div class="step-num step-num--emerald">01</div>
+                            <div class="step-content">
+                                <h4>Recommended Paper Types</h4>
+                                <p>• <strong>Passport &amp; ID Photos:</strong> Use 180–240 g/m² glossy or satin photo paper for sharp, non-bleeding facial details.<br>
+                                • <strong>Stickers &amp; School Labels:</strong> Use A4 self-adhesive vinyl or glossy sticker paper.<br>
+                                • <strong>Wall Posters:</strong> 120–160 g/m² matte presentation paper gives rich color depth without reflections.</p>
+                            </div>
+                        </div>
+
+                        <div class="step-row">
+                            <div class="step-num step-num--emerald">02</div>
+                            <div class="step-content">
+                                <h4>Print Quality &amp; DPI</h4>
+                                <p>In your printer properties, choose <strong>"High"</strong> or <strong>"Best Quality"</strong> instead of "Standard/Draft". PrintMaster outputs images at ultra-crisp <strong>300 DPI</strong>, so your printer's finest droplets will capture every micro-detail.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ── TAB 4: Batch Export & Pro Shortcuts ── -->
+                <div id="tab-batch-tips" class="tab-pane">
+                    <div class="tutorial-steps">
+                        <div class="step-row">
+                            <div class="step-num">⚡</div>
+                            <div class="step-content">
+                                <h4>Batch Printing (50, 100, 200+ Copies in One PDF)</h4>
+                                <p>Need 100 event badges or 50 employee photos? In the <strong>Copies &amp; Batch Export</strong> panel, type <span class="key-badge">100</span> or tap one of the quick preset buttons (<span class="key-badge">20</span>, <span class="key-badge">50</span>, <span class="key-badge">100</span>, <span class="key-badge">500</span>). PrintMaster will automatically divide them across the exact number of A4 sheets needed and export a single, seamless multi-page PDF!</p>
+                            </div>
+                        </div>
+
+                        <div class="step-row">
+                            <div class="step-num">⚡</div>
+                            <div class="step-content">
+                                <h4>Auto-Rotate 90° for Maximum Yield</h4>
+                                <p>Enable <span class="key-badge">Auto-rotate 90° for max yield</span> under Advanced Options. If rotating your image horizontally or vertically squeezes extra copies onto the page, PrintMaster does the math automatically to save expensive photo paper.</p>
+                            </div>
+                        </div>
+
+                        <div class="step-row">
+                            <div class="step-num">⚡</div>
+                            <div class="step-content">
+                                <h4>Custom 4-Way Asymmetric Margins</h4>
+                                <p>Click <strong>"Custom 4-Way Margins"</strong> to enter independent Top, Bottom, Left, and Right margins. This is ideal when printing sheets that will be hole-punched for 2-ring/4-ring school binders or spiral bound.</p>
+                            </div>
+                        </div>
+
+                        <div class="step-row">
+                            <div class="step-num">⚡</div>
+                            <div class="step-content">
+                                <h4>Live Blueprint Canvas Zoom Controls</h4>
+                                <p>Use your <strong>mouse scroll wheel</strong> or the View menu (<span class="key-badge">Ctrl +</span>, <span class="key-badge">Ctrl -</span>, <span class="key-badge">Fit to Screen</span>) to inspect millimeter lines and corner cut marks up close before hitting print.</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
 
         <!-- ════════════ Download ════════════ -->
-        <section class="download-section container reveal">
+        <section id="download" class="download-section container reveal">
             <div class="download-card">
                 <h2>Get <span class="highlight">PrintMaster A4</span></h2>
-                <p class="sub">Download the Windows installer or use the Telegram bot — both are free.</p>
+                <p class="sub">Download the Windows installer or launch the Telegram bot — both are completely free.</p>
 
                 <div class="download-actions">
                     <a href="https://www.mediafire.com/file/hczlguudv4tp7b5/PrintMasterA4.exe/file" class="btn btn--primary" target="_blank" rel="noopener">
@@ -768,23 +1249,23 @@
                     </a>
                     <a href="https://t.me/Duplicayoredz_bot" class="btn btn--telegram" target="_blank" rel="noopener">
                         <svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.479.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
-                        Try the Telegram Bot
+                        Open Telegram Bot
                     </a>
                 </div>
 
                 <div class="version-meta">
                     <span><span class="dot">●</span> Version 3.0</span>
                     <span><span class="dot">●</span> Windows 10/11</span>
-                    <span><span class="dot">●</span> Free to use</span>
+                    <span><span class="dot">●</span> 100% Free</span>
                 </div>
             </div>
         </section>
 
         <!-- ════════════ Social / Connect ════════════ -->
-        <section class="connect-section container reveal">
+        <section id="connect" class="connect-section container reveal">
             <span class="section-label">Connect</span>
             <h2 class="section-title">Get in touch</h2>
-            <p class="section-subtitle">Follow us for updates, tutorials, and support.</p>
+            <p class="section-subtitle">Follow us for updates, new templates, and direct support.</p>
 
             <div class="social-grid">
                 <!-- Facebook -->
@@ -835,12 +1316,30 @@
     </main>
 
     <!-- ═══════════════════════════════════════════════
-         Scroll-reveal Observer
+         Scripts: Tab Switching & Scroll Reveal
          ═══════════════════════════════════════════════ -->
     <script>
+        // Tab switching function
+        function switchTutorialTab(tabKey, btn) {
+            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+            document.querySelectorAll('.tab-pane').forEach(p => p.classList.remove('active'));
+
+            btn.classList.add('active');
+            const target = document.getElementById('tab-' + tabKey);
+            if (target) {
+                target.classList.add('active');
+            }
+        }
+
+        // Scroll observer for reveal animations
         const observer = new IntersectionObserver(
-            entries => entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } }),
-            { threshold: 0.15, rootMargin: '0px 0px -40px 0px' }
+            entries => entries.forEach(e => {
+                if (e.isIntersecting) {
+                    e.target.classList.add('visible');
+                    observer.unobserve(e.target);
+                }
+            }),
+            { threshold: 0.12, rootMargin: '0px 0px -30px 0px' }
         );
         document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
     </script>
